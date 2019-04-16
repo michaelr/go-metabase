@@ -5,6 +5,54 @@ info:
 servers:
   - url: http://example.com/api
 paths:
+  /api/table/{id}:
+    get:
+      summary: Get a table
+      operationId: getTable
+      tags:
+        - table
+      description: Fetch one table
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+    put:
+      summary: Update a table
+      operationId: updateTable
+      tags:
+        - table
+      description: Update a table
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Table
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Table'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
   /api/database:
     get:
       summary: List Databases
@@ -36,6 +84,28 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Database'
+  /api/database/{dbId}:
+    get:
+      summary: Get a Database
+      operationId: getDatabase
+      tags:
+        - database
+      description: Fetch one Databases.
+      parameters:
+        - name: dbId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Database'
+
   /api/dataset:
     post:
       summary: Execute a query
@@ -130,7 +200,7 @@ components:
     Database:
       type: object
       required:
-        - id  
+        - id
       properties:
         id:
           type: integer
@@ -175,6 +245,32 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DatabaseTable'
+    Table:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        display_name:
+          type: string
+        entity_type:
+          type: string
+        entity_type:
+          type: string
+        visibility_type:
+          type: string
+        description:
+          type: string
+        caveats:
+          type: string
+        points_of_interest:
+          type: string
+        show_in_getting_started:
+          type: boolean
     DatasetQueryOpts:
       type: object
       properties:

@@ -8,8 +8,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/grokify/go-metabase/metabase"
 	mo "github.com/grokify/oauth2more/metabase"
+	"github.com/michaelr/go-metabase/metabase"
 )
 
 const MaxPerPage = int64(2000)

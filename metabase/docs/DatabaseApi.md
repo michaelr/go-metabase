@@ -4,8 +4,37 @@ All URIs are relative to *http://example.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetDatabase**](DatabaseApi.md#GetDatabase) | **Get** /api/database/{dbId} | Get a Database
 [**ListDatabases**](DatabaseApi.md#ListDatabases) | **Get** /api/database | List Databases
 
+
+# **GetDatabase**
+> Database GetDatabase(ctx, dbId)
+Get a Database
+
+Fetch one Databases.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **dbId** | **int64**|  | 
+
+### Return type
+
+[**Database**](Database.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListDatabases**
 > []Database ListDatabases(ctx, optional)

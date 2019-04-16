@@ -5,6 +5,58 @@ info:
 servers:
 - url: http://example.com/api
 paths:
+  /api/table/{id}:
+    get:
+      description: Fetch one table
+      operationId: getTable
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+          description: successful operation
+      summary: Get a table
+      tags:
+      - table
+    put:
+      description: Update a table
+      operationId: updateTable
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Table'
+        description: Table
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+          description: successful operation
+      summary: Update a table
+      tags:
+      - table
   /api/database:
     get:
       description: Fetch all Databases. include_tables means we should hydrate the Tables belonging to each DB. include_cards here means we should also include virtual Table entries for saved Questions, e.g. so we can easily use them as source Tables in queries. Default for both is false.
@@ -38,6 +90,29 @@ paths:
                 type: array
           description: successful operation
       summary: List Databases
+      tags:
+      - database
+  /api/database/{dbId}:
+    get:
+      description: Fetch one Databases.
+      operationId: getDatabase
+      parameters:
+      - explode: false
+        in: path
+        name: dbId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Database'
+          description: successful operation
+      summary: Get a Database
       tags:
       - database
   /api/dataset:
@@ -264,6 +339,40 @@ components:
           items:
             $ref: '#/components/schemas/DatabaseTable'
           type: array
+      required:
+      - id
+      type: object
+    Table:
+      example:
+        entity_type: entity_type
+        show_in_getting_started: true
+        name: name
+        points_of_interest: points_of_interest
+        description: description
+        id: 0
+        display_name: display_name
+        caveats: caveats
+        visibility_type: visibility_type
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        display_name:
+          type: string
+        entity_type:
+          type: string
+        visibility_type:
+          type: string
+        description:
+          type: string
+        caveats:
+          type: string
+        points_of_interest:
+          type: string
+        show_in_getting_started:
+          type: boolean
       required:
       - id
       type: object

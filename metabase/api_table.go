@@ -12,7 +12,6 @@ package metabase
 import (
 	"context"
 	"fmt"
-	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -24,28 +23,28 @@ var (
 	_ context.Context
 )
 
-type DatabaseApiService service
+type TableApiService service
 
 /*
-DatabaseApiService Get a Database
-Fetch one Databases.
+TableApiService Get a table
+Fetch one table
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param dbId
-@return Database
+ * @param id
+@return Table
 */
-func (a *DatabaseApiService) GetDatabase(ctx context.Context, dbId int64) (Database, *http.Response, error) {
+func (a *TableApiService) GetTable(ctx context.Context, id int64) (Table, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Database
+		localVarReturnValue  Table
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/database/{dbId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"dbId"+"}", fmt.Sprintf("%v", dbId), -1)
+	localVarPath := a.client.cfg.BasePath + "/api/table/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -90,7 +89,7 @@ func (a *DatabaseApiService) GetDatabase(ctx context.Context, dbId int64) (Datab
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v Database
+			var v Table
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -115,45 +114,33 @@ func (a *DatabaseApiService) GetDatabase(ctx context.Context, dbId int64) (Datab
 }
 
 /*
-DatabaseApiService List Databases
-Fetch all Databases. include_tables means we should hydrate the Tables belonging to each DB. include_cards here means we should also include virtual Table entries for saved Questions, e.g. so we can easily use them as source Tables in queries. Default for both is false.
+TableApiService Update a table
+Update a table
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListDatabasesOpts - Optional Parameters:
- * @param "IncludeTables" (optional.Bool) -  value may be nil, or if non-nil, value must be a valid boolean string ('true' or 'false').
- * @param "IncludeCards" (optional.Bool) -  value may be nil, or if non-nil, value must be a valid boolean string ('true' or 'false').
-@return []Database
+ * @param id
+ * @param table Table
+@return Table
 */
-
-type ListDatabasesOpts struct {
-	IncludeTables optional.Bool
-	IncludeCards  optional.Bool
-}
-
-func (a *DatabaseApiService) ListDatabases(ctx context.Context, localVarOptionals *ListDatabasesOpts) ([]Database, *http.Response, error) {
+func (a *TableApiService) UpdateTable(ctx context.Context, id int64, table Table) (Table, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []Database
+		localVarReturnValue  Table
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/database"
+	localVarPath := a.client.cfg.BasePath + "/api/table/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if localVarOptionals != nil && localVarOptionals.IncludeTables.IsSet() {
-		localVarQueryParams.Add("include_tables", parameterToString(localVarOptionals.IncludeTables.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.IncludeCards.IsSet() {
-		localVarQueryParams.Add("include_cards", parameterToString(localVarOptionals.IncludeCards.Value(), ""))
-	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -169,6 +156,8 @@ func (a *DatabaseApiService) ListDatabases(ctx context.Context, localVarOptional
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	localVarPostBody = &table
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -191,7 +180,7 @@ func (a *DatabaseApiService) ListDatabases(ctx context.Context, localVarOptional
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []Database
+			var v Table
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

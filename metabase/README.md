@@ -30,8 +30,11 @@ All URIs are relative to *http://example.com/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DatabaseApi* | [**GetDatabase**](docs/DatabaseApi.md#getdatabase) | **Get** /api/database/{dbId} | Get a Database
 *DatabaseApi* | [**ListDatabases**](docs/DatabaseApi.md#listdatabases) | **Get** /api/database | List Databases
 *DatasetApi* | [**QueryDatabase**](docs/DatasetApi.md#querydatabase) | **Post** /api/dataset | Execute a query
+*TableApi* | [**GetTable**](docs/TableApi.md#gettable) | **Get** /api/table/{id} | Get a table
+*TableApi* | [**UpdateTable**](docs/TableApi.md#updatetable) | **Put** /api/table/{id} | Update a table
 
 
 ## Documentation For Models
@@ -55,6 +58,7 @@ Class | Method | HTTP request | Description
  - [DatasetQueryResultsMetadata](docs/DatasetQueryResultsMetadata.md)
  - [DatasetQueryResultsMetadataColumn](docs/DatasetQueryResultsMetadataColumn.md)
  - [DatasetQueryResultsNativeForm](docs/DatasetQueryResultsNativeForm.md)
+ - [Table](docs/Table.md)
 
 
 ## Documentation For Authorization
