@@ -33,7 +33,9 @@ Class | Method | HTTP request | Description
 *DatabaseApi* | [**GetDatabase**](docs/DatabaseApi.md#getdatabase) | **Get** /api/database/{dbId} | Get a Database
 *DatabaseApi* | [**ListDatabases**](docs/DatabaseApi.md#listdatabases) | **Get** /api/database | List Databases
 *DatasetApi* | [**QueryDatabase**](docs/DatasetApi.md#querydatabase) | **Post** /api/dataset | Execute a query
+*FieldApi* | [**UpdateField**](docs/FieldApi.md#updatefield) | **Put** /api/field/{id} | Update field
 *TableApi* | [**GetTable**](docs/TableApi.md#gettable) | **Get** /api/table/{id} | Get a table
+*TableApi* | [**GetTableMetadata**](docs/TableApi.md#gettablemetadata) | **Get** /api/table/{id}/query_metadata | Get table metadata
 *TableApi* | [**UpdateTable**](docs/TableApi.md#updatetable) | **Put** /api/table/{id} | Update a table
 
 
@@ -58,7 +60,9 @@ Class | Method | HTTP request | Description
  - [DatasetQueryResultsMetadata](docs/DatasetQueryResultsMetadata.md)
  - [DatasetQueryResultsMetadataColumn](docs/DatasetQueryResultsMetadataColumn.md)
  - [DatasetQueryResultsNativeForm](docs/DatasetQueryResultsNativeForm.md)
+ - [Field](docs/Field.md)
  - [Table](docs/Table.md)
+ - [TableMetadata](docs/TableMetadata.md)
 
 
 ## Documentation For Authorization

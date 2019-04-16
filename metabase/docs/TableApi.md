@@ -5,6 +5,7 @@ All URIs are relative to *http://example.com/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetTable**](TableApi.md#GetTable) | **Get** /api/table/{id} | Get a table
+[**GetTableMetadata**](TableApi.md#GetTableMetadata) | **Get** /api/table/{id}/query_metadata | Get table metadata
 [**UpdateTable**](TableApi.md#UpdateTable) | **Put** /api/table/{id} | Update a table
 
 
@@ -24,6 +25,34 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Table**](Table.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetTableMetadata**
+> TableMetadata GetTableMetadata(ctx, id)
+Get table metadata
+
+Fetch a table's metadata. (fields, db, foreign keys)
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **int64**|  | 
+
+### Return type
+
+[**TableMetadata**](TableMetadata.md)
 
 ### Authorization
 

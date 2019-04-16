@@ -5,6 +5,59 @@ info:
 servers:
 - url: http://example.com/api
 paths:
+  /api/field/{id}:
+    put:
+      description: Update field
+      operationId: updateField
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Field'
+        description: Field
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+          description: successful operation
+      summary: Update field
+      tags:
+      - field
+  /api/table/{id}/query_metadata:
+    get:
+      description: Fetch a table's metadata. (fields, db, foreign keys)
+      operationId: getTableMetadata
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TableMetadata'
+          description: successful operation
+      summary: Get table metadata
+      tags:
+      - table
   /api/table/{id}:
     get:
       description: Fetch one table
@@ -372,6 +425,138 @@ components:
         points_of_interest:
           type: string
         show_in_getting_started:
+          type: boolean
+      required:
+      - id
+      type: object
+    TableMetadata:
+      example:
+        entity_type: entity_type
+        show_in_getting_started: true
+        db_id: 6
+        entity_name: entity_name
+        name: name
+        points_of_interest: points_of_interest
+        description: description
+        id: 0
+        display_name: display_name
+        fields:
+        - special_type: special_type
+          settings: settings
+          fk_target_field_id: 1
+          description: description
+          active: true
+          preview_display: true
+          table_id: 6
+          display_name: display_name
+          target: target
+          database_type: database_type
+          parent_id: 5
+          name: name
+          id: 0
+          position: 5
+          visibility_type: visibility_type
+        - special_type: special_type
+          settings: settings
+          fk_target_field_id: 1
+          description: description
+          active: true
+          preview_display: true
+          table_id: 6
+          display_name: display_name
+          target: target
+          database_type: database_type
+          parent_id: 5
+          name: name
+          id: 0
+          position: 5
+          visibility_type: visibility_type
+        caveats: caveats
+        visibility_type: visibility_type
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        display_name:
+          type: string
+        entity_name:
+          type: string
+        entity_type:
+          type: string
+        visibility_type:
+          type: string
+        description:
+          type: string
+        caveats:
+          type: string
+        points_of_interest:
+          type: string
+        show_in_getting_started:
+          type: boolean
+        db_id:
+          format: int64
+          type: integer
+        fields:
+          items:
+            $ref: '#/components/schemas/Field'
+          type: array
+      required:
+      - id
+      type: object
+    Field:
+      example:
+        special_type: special_type
+        settings: settings
+        fk_target_field_id: 1
+        description: description
+        active: true
+        preview_display: true
+        table_id: 6
+        display_name: display_name
+        target: target
+        database_type: database_type
+        parent_id: 5
+        name: name
+        id: 0
+        position: 5
+        visibility_type: visibility_type
+      properties:
+        id:
+          format: int64
+          type: integer
+        table_id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        display_name:
+          type: string
+        visibility_type:
+          type: string
+        description:
+          type: string
+        database_type:
+          type: string
+        special_type:
+          type: string
+        settings:
+          type: string
+        fk_target_field_id:
+          format: int64
+          type: integer
+        active:
+          type: boolean
+        parent_id:
+          format: int64
+          type: integer
+        position:
+          format: int64
+          type: integer
+        target:
+          type: string
+        preview_display:
           type: boolean
       required:
       - id
