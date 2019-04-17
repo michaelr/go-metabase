@@ -5,7 +5,77 @@ info:
 servers:
 - url: http://example.com/api
 paths:
+  /api/field/{id}/dimension:
+    delete:
+      description: Delete field dimension
+      operationId: deleteDimension
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        204:
+          description: successful delete
+      summary: Delete field dimension
+      tags:
+      - field
+    post:
+      description: Update field dimension
+      operationId: updateDimension
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldDimension'
+        description: Dimension
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldDimension'
+          description: successful operation
+      summary: Update field dimension
+      tags:
+      - field
   /api/field/{id}:
+    get:
+      description: Get field
+      operationId: getField
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+          description: successful operation
+      summary: Get field
+      tags:
+      - field
     put:
       description: Update field
       operationId: updateField
@@ -166,6 +236,29 @@ paths:
                 $ref: '#/components/schemas/Database'
           description: successful operation
       summary: Get a Database
+      tags:
+      - database
+  /api/database/{dbId}/metadata:
+    get:
+      description: Fetch one Database metadata
+      operationId: getDatabaseMetadata
+      parameters:
+      - explode: false
+        in: path
+        name: dbId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseMetadata'
+          description: successful operation
+      summary: Get metadata for a Database
       tags:
       - database
   /api/dataset:
@@ -395,6 +488,157 @@ components:
       required:
       - id
       type: object
+    DatabaseMetadata:
+      example:
+        description: description
+        created_at: 2000-01-23T04:56:07.000+00:00
+        caveats: caveats
+        is_sample: true
+        features:
+        - features
+        - features
+        metadata_sync_schedule: metadata_sync_schedule
+        tables:
+        - entity_type: entity_type
+          show_in_getting_started: true
+          db_id: 6
+          entity_name: entity_name
+          name: name
+          points_of_interest: points_of_interest
+          description: description
+          id: 0
+          display_name: display_name
+          fields:
+          - special_type: special_type
+            fk_target_field_id: 1
+            description: description
+            active: true
+            preview_display: true
+            table_id: 6
+            display_name: display_name
+            database_type: database_type
+            parent_id: 5
+            name: name
+            id: 0
+            position: 5
+            visibility_type: visibility_type
+          - special_type: special_type
+            fk_target_field_id: 1
+            description: description
+            active: true
+            preview_display: true
+            table_id: 6
+            display_name: display_name
+            database_type: database_type
+            parent_id: 5
+            name: name
+            id: 0
+            position: 5
+            visibility_type: visibility_type
+          caveats: caveats
+          visibility_type: visibility_type
+        - entity_type: entity_type
+          show_in_getting_started: true
+          db_id: 6
+          entity_name: entity_name
+          name: name
+          points_of_interest: points_of_interest
+          description: description
+          id: 0
+          display_name: display_name
+          fields:
+          - special_type: special_type
+            fk_target_field_id: 1
+            description: description
+            active: true
+            preview_display: true
+            table_id: 6
+            display_name: display_name
+            database_type: database_type
+            parent_id: 5
+            name: name
+            id: 0
+            position: 5
+            visibility_type: visibility_type
+          - special_type: special_type
+            fk_target_field_id: 1
+            description: description
+            active: true
+            preview_display: true
+            table_id: 6
+            display_name: display_name
+            database_type: database_type
+            parent_id: 5
+            name: name
+            id: 0
+            position: 5
+            visibility_type: visibility_type
+          caveats: caveats
+          visibility_type: visibility_type
+        is_full_sync: true
+        native_permissions: native_permissions
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        engine: engine
+        name: name
+        points_of_interest: points_of_interest
+        details:
+          connProperties: connProperties
+          let-user-control-scheduling: true
+          password: password
+          dbname: dbname
+          port: 6
+          host: host
+          user: user
+          authMech: 1
+        id: 0
+        cache_field_values_schedule: cache_field_values_schedule
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        features:
+          items:
+            type: string
+          type: array
+        is_full_sync:
+          type: boolean
+        is_sample:
+          type: boolean
+        cache_field_values_schedule:
+          format: cron-schedule
+          type: string
+        metadata_sync_schedule:
+          format: cron-schedule
+          type: string
+        caveats:
+          description: type unknown
+          type: string
+        engine:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        native_permissions:
+          type: string
+        points_of_interest:
+          description: type unknown
+          type: string
+        details:
+          $ref: '#/components/schemas/DatabaseDetails'
+        tables:
+          items:
+            $ref: '#/components/schemas/TableMetadata'
+          type: array
+      required:
+      - id
+      type: object
     Table:
       example:
         entity_type: entity_type
@@ -442,14 +686,12 @@ components:
         display_name: display_name
         fields:
         - special_type: special_type
-          settings: settings
           fk_target_field_id: 1
           description: description
           active: true
           preview_display: true
           table_id: 6
           display_name: display_name
-          target: target
           database_type: database_type
           parent_id: 5
           name: name
@@ -457,14 +699,12 @@ components:
           position: 5
           visibility_type: visibility_type
         - special_type: special_type
-          settings: settings
           fk_target_field_id: 1
           description: description
           active: true
           preview_display: true
           table_id: 6
           display_name: display_name
-          target: target
           database_type: database_type
           parent_id: 5
           name: name
@@ -508,14 +748,12 @@ components:
     Field:
       example:
         special_type: special_type
-        settings: settings
         fk_target_field_id: 1
         description: description
         active: true
         preview_display: true
         table_id: 6
         display_name: display_name
-        target: target
         database_type: database_type
         parent_id: 5
         name: name
@@ -541,11 +779,11 @@ components:
           type: string
         special_type:
           type: string
-        settings:
-          type: string
         fk_target_field_id:
           format: int64
           type: integer
+        dimensions:
+          $ref: '#/components/schemas/FieldDimension'
         active:
           type: boolean
         parent_id:
@@ -554,13 +792,22 @@ components:
         position:
           format: int64
           type: integer
-        target:
-          type: string
         preview_display:
           type: boolean
       required:
       - id
       type: object
+    FieldDimensionArray:
+      items:
+        $ref: '#/components/schemas/FieldDimension'
+      type: array
+    FieldDimension:
+      anyOf:
+      - type: object
+      - items:
+          type: object
+        type: array
+      nullable: true
     DatasetQueryOpts:
       properties:
         description:

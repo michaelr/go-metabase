@@ -5,6 +5,7 @@ All URIs are relative to *http://example.com/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetDatabase**](DatabaseApi.md#GetDatabase) | **Get** /api/database/{dbId} | Get a Database
+[**GetDatabaseMetadata**](DatabaseApi.md#GetDatabaseMetadata) | **Get** /api/database/{dbId}/metadata | Get metadata for a Database
 [**ListDatabases**](DatabaseApi.md#ListDatabases) | **Get** /api/database | List Databases
 
 
@@ -24,6 +25,34 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Database**](Database.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetDatabaseMetadata**
+> DatabaseMetadata GetDatabaseMetadata(ctx, dbId)
+Get metadata for a Database
+
+Fetch one Database metadata
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **dbId** | **int64**|  | 
+
+### Return type
+
+[**DatabaseMetadata**](DatabaseMetadata.md)
 
 ### Authorization
 

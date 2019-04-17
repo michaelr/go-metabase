@@ -31,8 +31,12 @@ All URIs are relative to *http://example.com/api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DatabaseApi* | [**GetDatabase**](docs/DatabaseApi.md#getdatabase) | **Get** /api/database/{dbId} | Get a Database
+*DatabaseApi* | [**GetDatabaseMetadata**](docs/DatabaseApi.md#getdatabasemetadata) | **Get** /api/database/{dbId}/metadata | Get metadata for a Database
 *DatabaseApi* | [**ListDatabases**](docs/DatabaseApi.md#listdatabases) | **Get** /api/database | List Databases
 *DatasetApi* | [**QueryDatabase**](docs/DatasetApi.md#querydatabase) | **Post** /api/dataset | Execute a query
+*FieldApi* | [**DeleteDimension**](docs/FieldApi.md#deletedimension) | **Delete** /api/field/{id}/dimension | Delete field dimension
+*FieldApi* | [**GetField**](docs/FieldApi.md#getfield) | **Get** /api/field/{id} | Get field
+*FieldApi* | [**UpdateDimension**](docs/FieldApi.md#updatedimension) | **Post** /api/field/{id}/dimension | Update field dimension
 *FieldApi* | [**UpdateField**](docs/FieldApi.md#updatefield) | **Put** /api/field/{id} | Update field
 *TableApi* | [**GetTable**](docs/TableApi.md#gettable) | **Get** /api/table/{id} | Get a table
 *TableApi* | [**GetTableMetadata**](docs/TableApi.md#gettablemetadata) | **Get** /api/table/{id}/query_metadata | Get table metadata
@@ -43,6 +47,7 @@ Class | Method | HTTP request | Description
 
  - [Database](docs/Database.md)
  - [DatabaseDetails](docs/DatabaseDetails.md)
+ - [DatabaseMetadata](docs/DatabaseMetadata.md)
  - [DatabaseTable](docs/DatabaseTable.md)
  - [DatasetQueryConstraints](docs/DatasetQueryConstraints.md)
  - [DatasetQueryDsl](docs/DatasetQueryDsl.md)
@@ -61,6 +66,7 @@ Class | Method | HTTP request | Description
  - [DatasetQueryResultsMetadataColumn](docs/DatasetQueryResultsMetadataColumn.md)
  - [DatasetQueryResultsNativeForm](docs/DatasetQueryResultsNativeForm.md)
  - [Field](docs/Field.md)
+ - [FieldDimension](docs/FieldDimension.md)
  - [Table](docs/Table.md)
  - [TableMetadata](docs/TableMetadata.md)
 

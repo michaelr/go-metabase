@@ -5,7 +5,71 @@ info:
 servers:
   - url: http://example.com/api
 paths:
+  /api/field/{id}/dimension:
+    delete:
+      summary: Delete field dimension
+      operationId: deleteDimension
+      tags:
+        - field
+      description: Delete field dimension
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: successful delete
+    post:
+      summary: Update field dimension
+      operationId: updateDimension
+      tags:
+        - field
+      description: Update field dimension
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Dimension
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldDimension'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldDimension'
   /api/field/{id}:
+    get:
+      summary: Get field
+      operationId: getField
+      tags:
+        - field
+      description: Get field
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
     put:
       summary: Update field
       operationId: updateField
@@ -155,6 +219,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Database'
+  /api/database/{dbId}/metadata:
+    get:
+      summary: Get metadata for a Database
+      operationId: getDatabaseMetadata
+      tags:
+        - database
+      description: Fetch one Database metadata
+      parameters:
+        - name: dbId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseMetadata'
 
   /api/dataset:
     post:
@@ -295,6 +380,54 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DatabaseTable'
+    DatabaseMetadata:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+        is_full_sync:
+          type: boolean
+        is_sample:
+          type: boolean
+        cache_field_values_schedule:
+          type: string
+          format: cron-schedule
+        metadata_sync_schedule:
+          type: string
+          format: cron-schedule
+        caveats:
+          description: type unknown
+          type: string
+        engine:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        native_permissions:
+          type: string
+        points_of_interest:
+          description: type unknown
+          type: string
+        details:
+          $ref: '#/components/schemas/DatabaseDetails'
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/TableMetadata'
     Table:
       type: object
       required:
@@ -306,8 +439,6 @@ components:
         name:
           type: string
         display_name:
-          type: string
-        entity_type:
           type: string
         entity_type:
           type: string
@@ -377,12 +508,20 @@ components:
           type: string
         special_type:
           type: string
-        settings:
-          type: string
+       # settings:
+       #   type: string
         fk_target_field_id:
           type: integer
           format: int64
- #     "dimensions": [],
+        dimensions:
+         $ref: '#/components/schemas/FieldDimension'
+
+       #   type: string
+       #   oneOf:
+       #     - $ref: '#/components/schemas/FieldDimension'
+       #     - type: array
+       #       items:
+       #         $ref: '#/components/schemas/FieldDimension'
         active:
           type: boolean
         parent_id:
@@ -391,10 +530,37 @@ components:
         position:
           type: integer
           format: int64
-        target:
-          type: string
+       # target:
+       #   type: string
         preview_display:
           type: boolean
+    FieldDimensionArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/FieldDimension'
+    FieldDimension:
+      nullable: true
+      anyOf:
+        - type: object
+        - type: array
+          items:
+            type: object
+#    FieldDimension:
+#      type: object
+      # properties:
+      #   id:
+      #     type: integer
+      #     format: int64
+      #   field_id:
+      #     type: integer
+      #     format: int64
+      #   name:
+      #     type: string
+      #   type:
+      #     type: string
+      #   human_readable_field_id:
+      #     type: integer
+      #     format: int64
     DatasetQueryOpts:
       type: object
       properties:
