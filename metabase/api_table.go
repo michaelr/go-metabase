@@ -12,6 +12,7 @@ package metabase
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -118,9 +119,16 @@ TableApiService Get table metadata
 Fetch a table&#39;s metadata. (fields, db, foreign keys)
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
+ * @param optional nil or *GetTableMetadataOpts - Optional Parameters:
+ * @param "IncludeSensitiveFields" (optional.Bool) -  include fields marked visibility_type = \"sensitive\"
 @return TableMetadata
 */
-func (a *TableApiService) GetTableMetadata(ctx context.Context, id int64) (TableMetadata, *http.Response, error) {
+
+type GetTableMetadataOpts struct {
+	IncludeSensitiveFields optional.Bool
+}
+
+func (a *TableApiService) GetTableMetadata(ctx context.Context, id int64, localVarOptionals *GetTableMetadataOpts) (TableMetadata, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -138,6 +146,9 @@ func (a *TableApiService) GetTableMetadata(ctx context.Context, id int64) (Table
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.IncludeSensitiveFields.IsSet() {
+		localVarQueryParams.Add("include_sensitive_fields", parameterToString(localVarOptionals.IncludeSensitiveFields.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 

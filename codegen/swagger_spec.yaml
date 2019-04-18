@@ -111,6 +111,13 @@ paths:
           schema:
             type: integer
             format: int64
+        - name: include_sensitive_fields
+          in: query
+          description: include fields marked visibility_type = "sensitive"
+          required: false
+          schema:
+            type: boolean
+            default: false
       responses:
         '200':
           description: successful operation

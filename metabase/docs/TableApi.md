@@ -38,7 +38,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetTableMetadata**
-> TableMetadata GetTableMetadata(ctx, id)
+> TableMetadata GetTableMetadata(ctx, id, optional)
 Get table metadata
 
 Fetch a table's metadata. (fields, db, foreign keys)
@@ -49,6 +49,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **id** | **int64**|  | 
+ **optional** | ***GetTableMetadataOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a GetTableMetadataOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **includeSensitiveFields** | **optional.Bool**| include fields marked visibility_type &#x3D; \&quot;sensitive\&quot; | [default to false]
 
 ### Return type
 
