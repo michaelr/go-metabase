@@ -67,6 +67,7 @@ Class | Method | HTTP request | Description
  - [DatasetQueryResultsNativeForm](docs/DatasetQueryResultsNativeForm.md)
  - [Field](docs/Field.md)
  - [FieldDimension](docs/FieldDimension.md)
+ - [FieldSettings](docs/FieldSettings.md)
  - [Table](docs/Table.md)
  - [TableMetadata](docs/TableMetadata.md)
 

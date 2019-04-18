@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | **string** |  | [optional] 
 **DatabaseType** | **string** |  | [optional] 
 **SpecialType** | **string** |  | [optional] 
+**Settings** | [**FieldSettings**](FieldSettings.md) |  | [optional] 
 **FkTargetFieldId** | **int64** |  | [optional] 
 **Dimensions** | [**FieldDimension**](FieldDimension.md) |  | [optional] 
 **Active** | **bool** |  | [optional] 

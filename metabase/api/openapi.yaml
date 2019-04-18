@@ -519,30 +519,64 @@ components:
           display_name: display_name
           fields:
           - special_type: special_type
-            fk_target_field_id: 1
+            settings:
+              date_style: date_style
+              prefix: prefix
+              date_abbreviate: true
+              scale: 5
+              time_style: time_style
+              currency_style: currency_style
+              suffix: suffix
+              currency_in_header: true
+              decimals: 1
+              currency: currency
+              show_mini_bar: true
+              link_text: link_text
+              number_separators: number_separators
+              view_as: view_as
+              date_separator: date_separator
+              time_enabled: time_enabled
+            fk_target_field_id: 5
             description: description
             active: true
             preview_display: true
             table_id: 6
             display_name: display_name
             database_type: database_type
-            parent_id: 5
+            parent_id: 2
             name: name
             id: 0
-            position: 5
+            position: 7
             visibility_type: visibility_type
           - special_type: special_type
-            fk_target_field_id: 1
+            settings:
+              date_style: date_style
+              prefix: prefix
+              date_abbreviate: true
+              scale: 5
+              time_style: time_style
+              currency_style: currency_style
+              suffix: suffix
+              currency_in_header: true
+              decimals: 1
+              currency: currency
+              show_mini_bar: true
+              link_text: link_text
+              number_separators: number_separators
+              view_as: view_as
+              date_separator: date_separator
+              time_enabled: time_enabled
+            fk_target_field_id: 5
             description: description
             active: true
             preview_display: true
             table_id: 6
             display_name: display_name
             database_type: database_type
-            parent_id: 5
+            parent_id: 2
             name: name
             id: 0
-            position: 5
+            position: 7
             visibility_type: visibility_type
           caveats: caveats
           visibility_type: visibility_type
@@ -557,30 +591,64 @@ components:
           display_name: display_name
           fields:
           - special_type: special_type
-            fk_target_field_id: 1
+            settings:
+              date_style: date_style
+              prefix: prefix
+              date_abbreviate: true
+              scale: 5
+              time_style: time_style
+              currency_style: currency_style
+              suffix: suffix
+              currency_in_header: true
+              decimals: 1
+              currency: currency
+              show_mini_bar: true
+              link_text: link_text
+              number_separators: number_separators
+              view_as: view_as
+              date_separator: date_separator
+              time_enabled: time_enabled
+            fk_target_field_id: 5
             description: description
             active: true
             preview_display: true
             table_id: 6
             display_name: display_name
             database_type: database_type
-            parent_id: 5
+            parent_id: 2
             name: name
             id: 0
-            position: 5
+            position: 7
             visibility_type: visibility_type
           - special_type: special_type
-            fk_target_field_id: 1
+            settings:
+              date_style: date_style
+              prefix: prefix
+              date_abbreviate: true
+              scale: 5
+              time_style: time_style
+              currency_style: currency_style
+              suffix: suffix
+              currency_in_header: true
+              decimals: 1
+              currency: currency
+              show_mini_bar: true
+              link_text: link_text
+              number_separators: number_separators
+              view_as: view_as
+              date_separator: date_separator
+              time_enabled: time_enabled
+            fk_target_field_id: 5
             description: description
             active: true
             preview_display: true
             table_id: 6
             display_name: display_name
             database_type: database_type
-            parent_id: 5
+            parent_id: 2
             name: name
             id: 0
-            position: 5
+            position: 7
             visibility_type: visibility_type
           caveats: caveats
           visibility_type: visibility_type
@@ -695,30 +763,64 @@ components:
         display_name: display_name
         fields:
         - special_type: special_type
-          fk_target_field_id: 1
+          settings:
+            date_style: date_style
+            prefix: prefix
+            date_abbreviate: true
+            scale: 5
+            time_style: time_style
+            currency_style: currency_style
+            suffix: suffix
+            currency_in_header: true
+            decimals: 1
+            currency: currency
+            show_mini_bar: true
+            link_text: link_text
+            number_separators: number_separators
+            view_as: view_as
+            date_separator: date_separator
+            time_enabled: time_enabled
+          fk_target_field_id: 5
           description: description
           active: true
           preview_display: true
           table_id: 6
           display_name: display_name
           database_type: database_type
-          parent_id: 5
+          parent_id: 2
           name: name
           id: 0
-          position: 5
+          position: 7
           visibility_type: visibility_type
         - special_type: special_type
-          fk_target_field_id: 1
+          settings:
+            date_style: date_style
+            prefix: prefix
+            date_abbreviate: true
+            scale: 5
+            time_style: time_style
+            currency_style: currency_style
+            suffix: suffix
+            currency_in_header: true
+            decimals: 1
+            currency: currency
+            show_mini_bar: true
+            link_text: link_text
+            number_separators: number_separators
+            view_as: view_as
+            date_separator: date_separator
+            time_enabled: time_enabled
+          fk_target_field_id: 5
           description: description
           active: true
           preview_display: true
           table_id: 6
           display_name: display_name
           database_type: database_type
-          parent_id: 5
+          parent_id: 2
           name: name
           id: 0
-          position: 5
+          position: 7
           visibility_type: visibility_type
         caveats: caveats
         visibility_type: visibility_type
@@ -757,17 +859,34 @@ components:
     Field:
       example:
         special_type: special_type
-        fk_target_field_id: 1
+        settings:
+          date_style: date_style
+          prefix: prefix
+          date_abbreviate: true
+          scale: 5
+          time_style: time_style
+          currency_style: currency_style
+          suffix: suffix
+          currency_in_header: true
+          decimals: 1
+          currency: currency
+          show_mini_bar: true
+          link_text: link_text
+          number_separators: number_separators
+          view_as: view_as
+          date_separator: date_separator
+          time_enabled: time_enabled
+        fk_target_field_id: 5
         description: description
         active: true
         preview_display: true
         table_id: 6
         display_name: display_name
         database_type: database_type
-        parent_id: 5
+        parent_id: 2
         name: name
         id: 0
-        position: 5
+        position: 7
         visibility_type: visibility_type
       properties:
         id:
@@ -788,6 +907,8 @@ components:
           type: string
         special_type:
           type: string
+        settings:
+          $ref: '#/components/schemas/FieldSettings'
         fk_target_field_id:
           format: int64
           type: integer
@@ -805,6 +926,60 @@ components:
           type: boolean
       required:
       - id
+      type: object
+    FieldSettings:
+      example:
+        date_style: date_style
+        prefix: prefix
+        date_abbreviate: true
+        scale: 5
+        time_style: time_style
+        currency_style: currency_style
+        suffix: suffix
+        currency_in_header: true
+        decimals: 1
+        currency: currency
+        show_mini_bar: true
+        link_text: link_text
+        number_separators: number_separators
+        view_as: view_as
+        date_separator: date_separator
+        time_enabled: time_enabled
+      properties:
+        date_abbreviate:
+          type: boolean
+        date_separator:
+          type: string
+        date_style:
+          type: string
+        time_enabled:
+          type: string
+        time_style:
+          type: string
+        currency:
+          type: string
+        currency_in_header:
+          type: boolean
+        currency_style:
+          type: string
+        decimals:
+          format: int32
+          type: integer
+        number_separators:
+          type: string
+        prefix:
+          type: string
+        scale:
+          format: int32
+          type: integer
+        show_mini_bar:
+          type: boolean
+        suffix:
+          type: string
+        link_text:
+          type: string
+        view_as:
+          type: string
       type: object
     FieldDimensionArray:
       items:

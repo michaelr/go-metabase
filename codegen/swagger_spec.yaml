@@ -515,8 +515,8 @@ components:
           type: string
         special_type:
           type: string
-       # settings:
-       #   type: string
+        settings:
+          $ref: '#/components/schemas/FieldSettings'
         fk_target_field_id:
           type: integer
           format: int64
@@ -541,6 +541,41 @@ components:
        #   type: string
         preview_display:
           type: boolean
+    FieldSettings:
+      type: object
+      properties:
+        date_abbreviate:
+          type: boolean
+        date_separator:
+          type: string
+        date_style:
+          type: string
+        time_enabled:
+          type: string
+        time_style:
+          type: string
+        currency:
+          type: string
+        currency_in_header:
+          type: boolean
+        currency_style:
+          type: string
+        decimals:
+          type: integer
+        number_separators:
+          type: string
+        prefix:
+          type: string
+        scale:
+          type: integer
+        show_mini_bar:
+          type: boolean
+        suffix:
+          type: string
+        link_text:
+          type: string
+        view_as:
+          type: string
     FieldDimensionArray:
       type: array
       items:

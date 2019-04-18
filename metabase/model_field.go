@@ -18,6 +18,7 @@ type Field struct {
 	Description     string         `json:"description,omitempty"`
 	DatabaseType    string         `json:"database_type,omitempty"`
 	SpecialType     string         `json:"special_type,omitempty"`
+	Settings        FieldSettings  `json:"settings,omitempty"`
 	FkTargetFieldId int64          `json:"fk_target_field_id,omitempty"`
 	Dimensions      FieldDimension `json:"dimensions,omitempty"`
 	Active          bool           `json:"active,omitempty"`
